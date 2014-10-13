@@ -510,7 +510,7 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
           return viewValue;
         } else if (angular.isString(viewValue)) {
           var date = dateParser.parse(viewValue, dateFormat) || new Date(viewValue);
-          if (isNaN(date)) {
+          if (isNaN(date) || !angular.isDate(date)) {
             ngModel.$setValidity('date', false);
             return undefined;
           } else {
